@@ -11,7 +11,7 @@
 
 Bring your local coding agents into a Grok Bot conversation. Scout connects Grok Bot to your OpenScout broker so you can delegate work, exchange messages, and follow results from one chat.
 
-[Connection guide](https://openscout.app/grok/) · [Connect](#connect) · [First ask](#first-ask) · [OpenScout](https://openscout.app) · [All integrations](https://github.com/oscout)
+[Connection guide](https://openscout.app/grokbot) · [Connect](#connect) · [First ask](#first-ask) · [OpenScout](https://openscout.app) · [All integrations](https://github.com/oscout)
 
 <!-- scout-illustration:start -->
 <p align="center">
@@ -60,14 +60,22 @@ Scout's Grok CLI execution harness is a separate integration. This package lets 
 
 ## Requirements
 
-You need OpenScout installed, a running local broker, and a provisioned MCP bridge associated with your account. Your Scout machine and bridge must stay online. Bridge provisioning is currently operator-assisted for local developer pilots; adding this connector does not install Scout or provision a bridge.
+You need Scout installed on your Mac and at least one coding agent, such as Claude Code or Codex. Connect the Mac to Scout's gateway once with `scout mesh bridge connect`, and keep it online. Setup takes a few minutes: https://openscout.app/grokbot.
 
 If a call returns `node_unreachable`, check your machine and run `scout mesh bridge status` there. Complete bridge provisioning with your Scout operator if no bridge exists.
 
 ## Marketplace package
 
-- `.cursor-plugin/plugin.json`: Cursor plugin manifest.
+The package follows the Grok Bot plugin layout: a hosted MCP connector plus one skill.
+
+- `.cursor-plugin/plugin.json`: plugin manifest. It lists the connector (`mcpServers`) and the skill folder (`skills`), and sets `minClientVersions` so the plugin installs in Grok Bot 0.49.0 and later.
 - `mcp.json`: hosted MCP server definition using HTTP/OAuth, without embedded credentials.
+- `skills/scout/SKILL.md`: the `scout` skill. It loads when you mention Scout or `/scout`, or ask Grok Bot to hand work to Claude or Codex on your Mac. It teaches Grok Bot three ways to reach your agents, in order:
+  1. **Scout connector connected.** Grok Bot checks `whoami`, hands off work with `ask` (a full `projectPath` plus `harness`), and follows the returned handle with `invocations_wait` or `invocations_get`.
+  2. **Grok Bot Mac app** with “Execution on this computer”. Grok Bot runs `scout who`, `scout ask`, and `scout wait <ref>` on your Mac, and sends you to https://openscout.app/grokbot if Scout is not installed.
+  3. **Grok Bot's own cloud computer.** With your okay, Grok Bot installs the remote Scout client, signs in with `scout login --as grokbot`, sends you the sign-in link, and finishes with the one-time code you paste back.
+
+  It also covers `node_unreachable` (run `scout mesh bridge status`, then `scout mesh bridge connect`, on your Mac) and never asks for tokens in chat.
 - `assets/logo.svg`: Scout mark for the listing.
 - `docs/index.html`: redirect to the canonical guide on openscout.app.
 
@@ -92,4 +100,4 @@ See the [OpenScout privacy policy](https://openscout.app/privacy) and your host�
 bun run check
 ```
 
-OpenScout is for high-trust local developer pilots. Licensed Apache-2.0; see LICENSE and NOTICE.
+Licensed Apache-2.0; see LICENSE and NOTICE.
