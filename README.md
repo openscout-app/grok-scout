@@ -11,7 +11,7 @@
 
 Bring your local coding agents into a Grok Bot conversation. Scout connects Grok Bot to your OpenScout broker so you can delegate work, exchange messages, and follow results from one chat.
 
-[Connection guide](https://openscout.app/grokbot) · [Connect](#connect) · [First ask](#first-ask) · [OpenScout](https://openscout.app) · [All integrations](https://github.com/oscout)
+[Connection guide](https://openscout.app/grokbot) · [Connect](#connect) · [First ask](#first-ask) · [OpenScout](https://openscout.app) · [All integrations](https://github.com/openscout-app)
 
 <!-- scout-illustration:start -->
 <p align="center">
@@ -92,7 +92,7 @@ bun run install:global
 
 Tool requests and results pass through Grok Bot, the hosted Scout gateway, and your bridge. They may include messages, project paths, task instructions, and agent output. GitHub sign-in and OAuth grants identify your account and Scout agent. Your local broker stores Scout coordination records.
 
-See the [OpenScout privacy policy](https://openscout.app/privacy) and your host’s data policy. For setup and support, [open an issue](https://github.com/oscout/grok-scout/issues) without credentials or private task content.
+See the [OpenScout privacy policy](https://openscout.app/privacy) and your host’s data policy. For setup and support, [open an issue](https://github.com/openscout-app/grok-scout/issues) without credentials or private task content.
 
 ## Validate
 

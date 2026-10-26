@@ -11,4 +11,4 @@ The light and dark illustrations share the same geometry. Their platform mark is
 
 Platform marks and names remain the property of their respective owners. The original mark geometry is retained.
 
-Shared source and regeneration: [oscout/.github illustrations](https://github.com/oscout/.github/tree/main/illustrations).
+Shared source and regeneration: [openscout-app/.github illustrations](https://github.com/openscout-app/.github/tree/main/illustrations).
