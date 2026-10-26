@@ -132,7 +132,7 @@ describe("upsertScoutMcpServer", () => {
       },
       {
         type: "stdio",
-        command: "/Users/arach/.bun/bin/scout",
+        command: "/home/dev/.bun/bin/scout",
         args: ["mcp", "--context-root", "${workspaceFolder}"],
       },
     );
