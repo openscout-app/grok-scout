@@ -12,7 +12,7 @@
     "name": "OpenScout"
   },
   "homepage": "https://openscout.app/grokbot",
-  "repository": "https://github.com/oscout/grok-scout",
+  "repository": "https://github.com/openscout-app/grok-scout",
   "license": "Apache-2.0",
   "logo": "assets/logo.svg",
   "keywords": [
